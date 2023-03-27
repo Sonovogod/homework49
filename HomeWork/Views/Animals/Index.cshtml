@@ -1,0 +1,36 @@
+@model List<Animal>
+
+@{
+    ViewBag.Title = "Животные";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <h2>Животные</h2>
+</div>
+<a asp-action="Create" class="my-3 btn btn-outline-info">Добавить животное</a>
+
+<div class="table_section">
+    @if (!Model.Any())
+    {
+        <p>Животные еще не добавлены</p>
+    }
+    else
+    {
+        <table class="table" style="width: 100%;">
+            <tr>
+                <th>Id</th>
+                <th>Наименование</th>
+                <th>Тип</th>
+            </tr>
+            @foreach (var animal in @Model)
+            {
+                <tr>
+                    <td>@animal.Id</td>
+                    <td>@animal.Title</td>
+                    <td>@animal.Type</td>
+                </tr>
+            }
+        </table>
+    }
+</div>
